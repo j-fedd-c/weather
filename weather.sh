@@ -266,7 +266,6 @@ function draw_buffer() {
   for i in $(seq 0 15); do
       echo "${screenbuffer[i]}"
   done
-  echo -n "${screenbuffer[15]}"
 }
 
 # Main loop
