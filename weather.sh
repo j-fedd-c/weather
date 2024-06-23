@@ -263,10 +263,10 @@ function draw_buffer() {
   clear_screen
 
   # Print the screenbuffer (last line without newline to prevent scrolling)
-  for i in $(seq 0 14); do
+  for i in $(seq 0 15); do
       echo "${screenbuffer[i]}"
   done
-  echo -n "${screenbuffer[14]}"
+  echo -n "${screenbuffer[15]}"
 }
 
 # Main loop
