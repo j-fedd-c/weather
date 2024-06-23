@@ -4,6 +4,7 @@
 ##   to 50 x 15 characters to fit on Beepy screen with 8x16 fonts.
 ##
 ## v0.04 by TheMediocritist 20230830
+## slight modifications by jfedd and ChatGPT 4o
 
 # Default values
 DEFAULT_LOCATION=Palo+Alto
