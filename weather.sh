@@ -93,6 +93,25 @@ function set_location_units() {
   
 }
 
+function toggle_units() {
+
+  if [[ $units == "imperial" ]]; then
+    units="metric"
+    units_short="m"
+  else
+    units="imperial"
+    units_short="u"
+  fi
+  
+  # Update configuration file with new units
+  echo "location=$location" > "$CONFIG_FILE"
+  echo "units=$units" >> "$CONFIG_FILE"
+  
+  # Refresh data with the new units
+  fetch_data
+  
+}
+
 function reset_buffer() {
   # Set up a screen buffer
   screenbuffer=("                          [            ]        /3" \
@@ -109,7 +128,7 @@ function reset_buffer() {
                 "                 │               │               │" \
                 "                 │               │               │" \
                 "                 │               │               │" \
-                "(q)uit, (s)etup  └───────────────┴───────────────┘")
+                "(q)uit, (s)etup, (u)nits  └───────────────┴───────────────┘")
 }
 
 # Helper function for padding/trimming string to desired length
@@ -154,6 +173,9 @@ function handleKeyPress() {
   elif [[ $key == "s" ]]; then # Enter the settings screen
     set_location_units
     fetch_data
+  elif [[ $key == "u" ]]; then # Toggle units between metric and imperial
+    toggle_units
+    fetch_data
   else
     # Increment PAGE variable and reset to 1 if it reaches 3
     ((PAGE++))
@@ -177,7 +199,6 @@ function fetch_data() {
   echo "                    loading..."
   
   # Fetch data from wttr.in
-  #curl wttr.in/$location?T?$units --silent --max-time 3 > /tmp/weather
   readarray aWeather < <(curl wttr.in/$location?T?$units_short --silent --max-time 5)
 
   # Strip newlines from data
