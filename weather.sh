@@ -4,6 +4,7 @@
 ##   to 50 x 15 characters to fit on Beepy screen with 8x16 fonts.
 ##
 ## v0.04 by TheMediocritist 20230830
+## slight modifications by jfedd and ChatGPT 4o
 
 # Default values
 DEFAULT_LOCATION=Palo+Alto
@@ -128,7 +129,8 @@ function reset_buffer() {
                 "                 │               │               │" \
                 "                 │               │               │" \
                 "                 │               │               │" \
-                "(q)uit, (s)etup, (u)nits  └───────────────┴───────────────┘")
+                "                 └───────────────┴───────────────┘" \
+                "(q)uit, (s)etup, (u)nits                          ")
 }
 
 # Helper function for padding/trimming string to desired length
@@ -261,11 +263,10 @@ function draw_buffer() {
 
   clear_screen
 
-  # Print the screenbuffer (last line without newline to prevent scrolling
-  for i in $(seq 0 13); do
+  # Print the screenbuffer (last line without newline to prevent scrolling)
+  for i in $(seq 0 15); do
       echo "${screenbuffer[i]}"
   done
-  echo -n "${screenbuffer[14]}"
 }
 
 # Main loop
