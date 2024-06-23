@@ -126,9 +126,10 @@ function reset_buffer() {
                 "                 │               │               │" \
                 "                 │               │               │" \
                 "                 │               │               │" \
-                "(q)uit           │               │               │" \
-                "(s)etup          │               │               │" \
-                "(u)nits          └───────────────┴───────────────┘") 
+                "                 │               │               │" \
+                "                 │               │               │" \
+                "                 └───────────────┴───────────────┘" \
+                "(q)uit, (s)etup, (u)nits                          ")
 }
 
 # Helper function for padding/trimming string to desired length
