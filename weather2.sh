@@ -47,10 +47,6 @@ function initialise() {
   if [[ $units == "imperial" ]]; then
     units_short="u"
   elif [[ $units == "metric" ]]; then
-    units_short="m"
-  else
-    # Default to imperial if units are not set correctly
-    units="imperial"
     units_short="u"
   fi
   
@@ -87,10 +83,6 @@ function set_location_units() {
   if [[ $units == "imperial" ]]; then
     units_short="u"
   elif [[ $units == "metric" ]]; then
-    units_short="m"
-  else
-    # Default to imperial if units are not set correctly
-    units="imperial"
     units_short="u"
   fi
   
@@ -185,6 +177,7 @@ function fetch_data() {
   echo "                    loading..."
   
   # Fetch data from wttr.in
+  #curl wttr.in/$location?T?$units --silent --max-time 3 > /tmp/weather
   readarray aWeather < <(curl wttr.in/$location?T?$units_short --silent --max-time 5)
 
   # Strip newlines from data
