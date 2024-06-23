@@ -128,7 +128,8 @@ function reset_buffer() {
                 "                 │               │               │" \
                 "                 │               │               │" \
                 "                 │               │               │" \
-                "(q)uit, (s)etup, (u)nits  └───────────────┴───────────────┘")
+                "                 └───────────────┴───────────────┘" \
+                "(q)uit, (s)etup, (u)nits                          ")
 }
 
 # Helper function for padding/trimming string to desired length
@@ -261,11 +262,10 @@ function draw_buffer() {
 
   clear_screen
 
-  # Print the screenbuffer (last line without newline to prevent scrolling
-  for i in $(seq 0 13); do
+  # Print the screenbuffer (last line without newline to prevent scrolling)
+  for i in $(seq 0 14); do
       echo "${screenbuffer[i]}"
   done
-  echo -n "${screenbuffer[14]}"
 }
 
 # Main loop
